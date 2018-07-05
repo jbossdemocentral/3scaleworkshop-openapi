@@ -1,0 +1,76 @@
+---
+openapi: 3.0.0
+info:
+  title: Locations-UserX
+  description: Locations API
+  version: 1.0.0
+paths:
+  /locations:
+    get:
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/location'
+              examples:
+                all:
+                  value: |-
+                    [
+                        {
+                            "id": 1,
+                            "name": "International Inc Corporate Office",
+                            "location": {
+                                "lat": 51.5013673,
+                                "long": -0.1440787
+                            },
+                            "type": "headquarter",
+                            "status": "1"
+                        },
+                        {
+                            "id": 2,
+                            "name": "International Inc North America",
+                            "location": {
+                                "lat": 40.6976701,
+                                "long": -74.259876
+                            },
+                            "type": "office",
+                            "status": "1"
+                        },
+                        {
+                            "id": 3,
+                            "name": "International Inc France",
+                            "location": {
+                                "lat": 48.859,
+                                "long": 2.2069746
+                            },
+                            "type": "office",
+                            "status": "1"
+                        }
+                    ]
+components:
+  schemas:
+    location:
+      title: Root Type for location
+      description: The root of the location type's schema.
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        location:
+          type: object
+          properties:
+            lat:
+              format: double
+              type: number
+            long:
+              format: double
+              type: number
+        type:
+          type: string
+        status:
+          format: int32
+          type: integer
